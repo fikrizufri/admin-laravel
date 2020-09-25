@@ -45,7 +45,7 @@
               </tr>
               @empty
               <tr>
-                <td colspan="10">Data Warga tidak ada</td>
+                <td colspan="10">Data Pengguna tidak ada</td>
               </tr>
               @endforelse
             </tbody>
