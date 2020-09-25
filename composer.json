@@ -42,8 +42,8 @@
         "files": [
             "app/Helpers/TanggalIndonesia.php",
             "app/Helpers/Tanggal.php",
-            "app/Helpers/Formatuang.php",
-            "app/Helpers/AngkaTerbilang.php"
+            "app/Helpers/AngkaTerbilang.php",
+            "app/Helpers/FormatUang.php"
         ]
     },
     "autoload-dev": {
