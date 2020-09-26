@@ -42,7 +42,16 @@
           <a href="{{route('kecamatan.index')}}" class="nav-link {{ Request::segment(1) === 'kecamatan' ? 'active' : '' }}">
             <i class="nav-icon fa fa-briefcase"></i>
             <p>
-              kecamatan
+              Kecamatan
+              <!-- <span class="right badge badge-danger">New</span> -->
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{route('inbox.index')}}" class="nav-link {{ Request::segment(1) === 'inbox' ? 'active' : '' }}">
+            <i class="nav-icon fa fa-mail"></i>
+            <p>
+              Inbox
               <!-- <span class="right badge badge-danger">New</span> -->
             </p>
           </a>

@@ -14,7 +14,10 @@ class InboxController extends Controller
      */
     public function index()
     {
-        //
+        $title =  "Inbox";
+        $dataInbox = Inbox::paginate(5);
+        $route = 'Inbox';
+        return view('inbox.index', compact("title", "dataInbox", "route"));
     }
 
     /**
