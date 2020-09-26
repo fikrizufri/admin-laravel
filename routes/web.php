@@ -19,6 +19,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('user', 'UserController');
     Route::resource('kabupaten', 'KabupatenController');
     Route::resource('kecamatan', 'KecamatanController');
+    Route::resource('kelurahan', 'KelurahanController');
     Route::get('/datakecamatan', 'KecamatanController@data');
 
     Route::resource('inbox', 'InboxController');

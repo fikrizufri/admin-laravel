@@ -128,7 +128,11 @@
   {{-- <script src="{{asset('template/dist/js/pages/dashboard.js')}}"></script> --}}
   <!-- AdminLTE for demo purposes -->
   <script src="{{asset('template/dist/js/demo.js')}}"></script>
-
+  <script>
+    setTimeout(function() {
+      $(".alert").alert('close');
+    }, 2000);
+  </script>
   <script src="{{ asset('js/swall.js') }}"></script>
   @stack('script')
 </body>

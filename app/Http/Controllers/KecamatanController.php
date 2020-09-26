@@ -51,7 +51,7 @@ class KecamatanController extends Controller
         ];
 
         $this->validate(request(), [
-            'nama' => 'required|unique:kabupaten',
+            'nama' => 'required|unique:kecamatan',
             'kabupaten' => 'required',
         ], $messages);
 
@@ -81,7 +81,7 @@ class KecamatanController extends Controller
      */
     public function edit(Kecamatan $kecamatan)
     {
-        $title =  "kecamatan " . $kecamatan->nama;
+        $title =  "Kecamatan " . $kecamatan->nama;
         $dataKabupaten = Kabupaten::all();
         $action = route('kecamatan.update', $kecamatan->id);
         return view('kecamatan.edit', compact('action', 'title', 'kecamatan', 'dataKabupaten'));

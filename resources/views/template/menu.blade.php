@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
   <a href="{{route('home')}}" class="brand-link">
-    <img src="{{asset('template/dist/img/logo.png')}}" width="30%" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <img src="{{asset('template/dist/img/logo2.png')}}" width="30%" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
     <span class="brand-text font-weight-light">Dashboard</span>
   </a>
 
@@ -29,29 +29,51 @@
             </p>
           </a>
         </li>
-        <li class="nav-item">
-          <a href="{{route('kabupaten.index')}}" class="nav-link {{ Request::segment(1) === 'kabupaten' ? 'active' : '' }}">
+        <li class="nav-item has-treeview">
+          <a href="#" class="nav-link">
             <i class="nav-icon fa fa-building"></i>
             <p>
-              Kabupaten
-              <!-- <span class="right badge badge-danger">New</span> -->
+              Data Wilayah
+              <i class="fas fa-angle-left right"></i>
             </p>
           </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{route('kabupaten.index')}}" class="nav-link {{ Request::segment(1) === 'kabupaten' ? 'active' : '' }}">
+                <i class="nav-icon fa fa-building"></i>
+                <p>
+                  Kabupaten
+                  <!-- <span class="right badge badge-danger">New</span> -->
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{route('kecamatan.index')}}" class="nav-link {{ Request::segment(1) === 'kecamatan' ? 'active' : '' }}">
+                <i class="nav-icon fa fa-briefcase"></i>
+                <p>
+                  Kecamatan
+                  <!-- <span class="right badge badge-danger">New</span> -->
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{route('kelurahan.index')}}" class="nav-link {{ Request::segment(1) === 'kelurahan' ? 'active' : '' }}">
+                <i class="nav-icon fa fa-briefcase"></i>
+                <p>
+                  Kelurahan
+                  <!-- <span class="right badge badge-danger">New</span> -->
+                </p>
+              </a>
+            </li>
+          </ul>
         </li>
-        <li class="nav-item">
-          <a href="{{route('kecamatan.index')}}" class="nav-link {{ Request::segment(1) === 'kecamatan' ? 'active' : '' }}">
-            <i class="nav-icon fa fa-briefcase"></i>
-            <p>
-              Kecamatan
-              <!-- <span class="right badge badge-danger">New</span> -->
-            </p>
-          </a>
-        </li>
+
         <li class="nav-item">
           <a href="{{route('inbox.index')}}" class="nav-link {{ Request::segment(1) === 'inbox' ? 'active' : '' }}">
-            <i class="nav-icon fa fa-mail"></i>
+            <i class="nav-icon fa fa-envelope"></i>
             <p>
               Inbox
+              <span class="badge badge-info right">2</span>
               <!-- <span class="right badge badge-danger">New</span> -->
             </p>
           </a>
