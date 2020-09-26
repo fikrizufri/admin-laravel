@@ -92,13 +92,15 @@ class InboxController extends Controller
     public function receive(Request $request)
     {
         // return $request;
+        $inbox = new Inbox;
+        $inbox->id_sms =  $request->idsms;
+        $inbox->sender =  $request->sender;
+        $inbox->content = $request->content;
+        $inbox->modem = $request->modem;
+        $inbox->auth = $request->auth;
+        $inbox->tanggal = $request->datetime;
+        $inbox->save();
         try {
-            $inbox = new Inbox;
-            $inbox->id_sms =  $request->idsms;
-            $inbox->sender =  $request->sender;
-            $inbox->content = $request->content;
-            $inbox->tanggal = $request->Datetime;
-            $inbox->save();
             $data = [
                 "status" => "succes",
                 "data" => $inbox

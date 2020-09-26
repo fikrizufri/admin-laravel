@@ -17,6 +17,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/home', 'HomeController@index');
     Route::resource('user', 'UserController');
+    Route::resource('kabupaten', 'KabupatenController');
+    Route::resource('kecamatan', 'KecamatanController');
+    Route::get('/datakecamatan', 'KecamatanController@data');
 });
 
 

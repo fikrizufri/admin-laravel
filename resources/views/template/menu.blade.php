@@ -30,6 +30,24 @@
           </a>
         </li>
         <li class="nav-item">
+          <a href="{{route('kabupaten.index')}}" class="nav-link {{ Request::segment(1) === 'kabupaten' ? 'active' : '' }}">
+            <i class="nav-icon fa fa-building"></i>
+            <p>
+              Kabupaten
+              <!-- <span class="right badge badge-danger">New</span> -->
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{route('kecamatan.index')}}" class="nav-link {{ Request::segment(1) === 'kecamatan' ? 'active' : '' }}">
+            <i class="nav-icon fa fa-briefcase"></i>
+            <p>
+              kecamatan
+              <!-- <span class="right badge badge-danger">New</span> -->
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="{{route('user.index')}}" class="nav-link {{ Request::segment(1) === 'user' ? 'active' : '' }}">
             <i class="nav-icon fa fa-user-circle"></i>
             <p>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInboxesTable extends Migration
+class CreateKecamatansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateInboxesTable extends Migration
      */
     public function up()
     {
-        Schema::create('inbox', function (Blueprint $table) {
+        Schema::create('kecamatan', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('id_sms', 16);
-            $table->string('sender');
-            $table->string('content')->nullable();
-            $table->string('modem');
-            $table->string('auth');
-            $table->string('tanggal');
+            $table->string('nama', 50);
+            $table->string('kabupaten_id')->references('id')->on('kabupaten');
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ class CreateInboxesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('inboxes');
+        Schema::dropIfExists('kecamatans');
     }
 }
