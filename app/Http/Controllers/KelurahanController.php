@@ -61,7 +61,7 @@ class KelurahanController extends Controller
         $kelurahan->nama =  $request->nama;
         $kelurahan->kecamatan_id =  $request->kecamatan;
         $kelurahan->save();
-        return redirect()->route('kelurahan.index')->with('message', 'Kecamatan berhasil ditambah');
+        return redirect()->route('kelurahan.index')->with('message', 'Kelurahan berhasil ditambah');
     }
 
     /**
@@ -130,5 +130,17 @@ class KelurahanController extends Controller
         $kelurahan->delete();
 
         return redirect()->route('kelurahan.index')->with('message', 'Kelurahan berhasil dihapus')->with('Class', 'Berhasil');
+    }
+
+    public function detail(Request $request)
+    {
+        $id = $request->id;
+        $dataKelurahan = [];
+        if ($id) {
+            $dataKelurahan = Kelurahan::where('kecamatan_id', $id)->get();
+            return response()->json($dataKelurahan);
+        } else {
+            return response()->json($dataKelurahan);
+        }
     }
 }

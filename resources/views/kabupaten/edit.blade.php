@@ -17,10 +17,10 @@
                     <div class="card-body">
                         <div class="form-group">
                             <div>
-                                <label for="nama" class=" form-control-label">Nama Satuan</label>
+                                <label for="nama" class=" form-control-label">Nama {{$title}}</label>
                             </div>
                             <div>
-                                <input type="text" name="nama" id="nama" placeholder="Nama Satuan" class="form-control  {{$errors->has('nama') ? 'form-control is-invalid' : 'form-control'}}" value="{{ $kabupaten->nama }}" required>
+                                <input type="text" name="nama" id="nama" placeholder="Nama {{$title}}" class="form-control  {{$errors->has('nama') ? 'form-control is-invalid' : 'form-control'}}" value="{{ $kabupaten->nama }}" required>
                             </div>
                             @if ($errors->has('nama'))
                             <span class="text-danger">

@@ -29,8 +29,8 @@
             </p>
           </a>
         </li>
-        <li class="nav-item has-treeview">
-          <a href="#" class="nav-link">
+        <li class="nav-item has-treeview {{ Request::segment(1) === 'kabupaten' ? 'menu-open' : '' }} {{ Request::segment(1) === 'kelurahan' ? 'menu-open' : '' }} {{ Request::segment(1) === 'kecamatan' ? 'menu-open' : '' }}">
+          <a href="#" class="nav-link {{ Request::segment(1) === 'kabupaten' ? 'active' : '' }} {{ Request::segment(1) === 'kelurahan' ? 'active' : '' }} {{ Request::segment(1) === 'kecamatan' ? 'active' : '' }}">
             <i class="nav-icon fa fa-building"></i>
             <p>
               Data Wilayah
@@ -58,7 +58,7 @@
             </li>
             <li class="nav-item">
               <a href="{{route('kelurahan.index')}}" class="nav-link {{ Request::segment(1) === 'kelurahan' ? 'active' : '' }}">
-                <i class="nav-icon fa fa-briefcase"></i>
+                <i class="nav-icon fas fa-map"></i>
                 <p>
                   Kelurahan
                   <!-- <span class="right badge badge-danger">New</span> -->
@@ -69,11 +69,47 @@
         </li>
 
         <li class="nav-item">
+          <a href="{{route('tps.index')}}" class="nav-link {{ Request::segment(1) === 'tps' ? 'active' : '' }}">
+            <i class="nav-icon fas fa-archway"></i>
+            <p>
+              TPS
+              <!-- <span class="right badge badge-danger">New</span> -->
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{route('paslon.index')}}" class="nav-link {{ Request::segment(1) === 'paslon' ? 'active' : '' }}">
+            <i class="nav-icon fas fa-address-card"></i>
+            <p>
+              Paslon
+              <!-- <span class="right badge badge-danger">New</span> -->
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{route('saksi.index')}}" class="nav-link {{ Request::segment(1) === 'saksi' ? 'active' : '' }}">
+            <i class="nav-icon fas fa-address-book"></i>
+            <p>
+              Saksi
+              <!-- <span class=" right badge badge-danger">New</span> -->
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{route('perhitungan.index')}}" class="nav-link {{ Request::segment(1) === 'perhitungan' ? 'active' : '' }}">
+            <i class="nav-icon fas fa-book-reader"></i>
+            <p>
+              Perhitungan
+              <!-- <span class="right badge badge-danger">New</span> -->
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="{{route('inbox.index')}}" class="nav-link {{ Request::segment(1) === 'inbox' ? 'active' : '' }}">
             <i class="nav-icon fa fa-envelope"></i>
             <p>
               Inbox
-              <span class="badge badge-info right">2</span>
+              <span class="badge badge-info right" id="countinbox"></span>
               <!-- <span class="right badge badge-danger">New</span> -->
             </p>
           </a>

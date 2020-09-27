@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Peserta;
-use App\Pengajar;
-use App\Warga;
+use App\Models\Paslon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -28,7 +26,18 @@ class HomeController extends Controller
     public function index()
     {
         $title =  "Dashboard";
-        $user = User::count();
-        return view('home.index', compact('title', 'user'));
+        $paslon = Paslon::orderBy('nourut', 'ASC')->get();
+        $nourut = [];
+        $suara = [];
+        foreach ($paslon as $key => $item) {
+            $nourut[$key] = $item->nourut;
+            $suara[$key] = $item->suara;
+        }
+        return view('home.index', compact(
+            'title',
+            'suara',
+            'nourut',
+            "paslon"
+        ));
     }
 }

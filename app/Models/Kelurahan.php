@@ -32,4 +32,10 @@ class Kelurahan extends Model
             return $this->kecamatan->nama_kabupaten;
         }
     }
+    public function getIdKabupatenAttribute()
+    {
+        if ($this->kecamatan) {
+            return $this->kecamatan->kabupaten->id;
+        }
+    }
 }

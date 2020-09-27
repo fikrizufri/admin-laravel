@@ -129,7 +129,17 @@ class KecamatanController extends Controller
         return redirect()->route('kecamatan.index')->with('message', 'Kecamatan berhasil dihapus')->with('Class', 'Berhasil');
     }
 
-
+    public function detail(Request $request)
+    {
+        $id = $request->id;
+        $dataKecamatan = [];
+        if ($id) {
+            $dataKecamatan = Kecamatan::where('kabupaten_id', $id)->get();
+            return response()->json($dataKecamatan);
+        } else {
+            return response()->json($dataKecamatan);
+        }
+    }
 
     /**
      * Remove the specified resource from storage.

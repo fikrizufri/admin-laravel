@@ -16,25 +16,11 @@
                     {{ method_field('PUT') }}
                     <div class="card-body">
                         <div class="form-group ">
-                            <label for="kabupaten">Kabupaten</label>
-                            <select name="kabupaten" class="selected2 form-control" id="cmbkabupaten">
-                                <option value="">--Pilih Kabupaten--</option>
-                                @foreach ($dataKabupaten as $kabupaten)
-                                <option value="{{$kabupaten->id}}" {{$kelurahan->kecamatan->kabupaten_id == $kabupaten->id ? "selected" : ""}}>{{$kabupaten->nama}}</option>
-                                @endforeach
-                            </select>
-                            @if ($errors->has('kabupaten'))
-                            <span class="text-danger">
-                                <strong id="textkabupaten">{{ $errors->first('Kelurahan')}}</strong>
-                            </span>
-                            @endif
-                        </div>
-                        <div class="form-group ">
                             <label for="kecamatan">Kecamatan</label>
                             <select name="kecamatan" class="selected2 form-control" id="cmbkecamatan">
                                 <option value="">--Pilih kecamatan--</option>
                                 @foreach ($dataKecamatan as $kecamatan)
-                                <option value="{{$kecamatan->id}}" {{$kelurahan->kecamatan_id == $kecamatan->id ? "selected" : ""}}>{{$kecamatan->nama}}</option>
+                                <option value="{{$kecamatan->id}}" {{$kelurahan->kecamatan_id == $kecamatan->id ? "selected" : ""}}>{{'Kecamatan : '.$kecamatan->nama.', Kabupaten :'.$kecamatan->nama_kabupaten}}</option>
                                 @endforeach
                             </select>
                             @if ($errors->has('kecamatan'))
@@ -45,10 +31,10 @@
                         </div>
                         <div class="form-group">
                             <div>
-                                <label for="nama" class=" form-control-label">Nama Kelurahan</label>
+                                <label for="nama" class=" form-control-label">Nama {{$title}}</label>
                             </div>
                             <div>
-                                <input type="text" name="nama" id="nama" placeholder="Nama Kelurahan" class="form-control  {{$errors->has('nama') ? 'form-control is-invalid' : 'form-control'}}" value="{{ $kelurahan->nama }}" required>
+                                <input type="text" name="nama" id="nama" placeholder="Nama {{$title}}" class="form-control  {{$errors->has('nama') ? 'form-control is-invalid' : 'form-control'}}" value="{{ $kelurahan->nama }}" required>
                             </div>
                             @if ($errors->has('nama'))
                             <span class="text-danger">
@@ -86,6 +72,14 @@
             //   $("#id_rt").removeClass("is-invalid");
             //   $("#textid_rt").html("");
             // });
+            $('#cmbkabupaten').select2({
+                placeholder: '--- Pilih Kabupaten---',
+                width: '100%'
+            });
+            $('#cmbkecamatan').select2({
+                placeholder: '--- Pilih Kecamatan---',
+                width: '100%'
+            });
         });
     </script>
     @endpush

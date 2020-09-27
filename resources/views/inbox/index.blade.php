@@ -13,21 +13,25 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
-          <table class="table table-bordered">
+          <table class="table table-bordered  table-hover">
             <thead>
               <tr>
                 <th>No</th>
                 <th>Pengirim</th>
                 <th>Content</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody>
               @forelse ($dataInbox as $index => $item)
 
-              <tr>
+              <tr role="button" data-href="{{route('inbox.show', $item->id)}}">
                 <td>{{ $index+1+(($dataInbox->CurrentPage()-1)*$dataInbox->PerPage()) }}</td>
                 <td>{{$item->sender}}</td>
                 <td>{{$item->content}}</td>
+                <td>@if($item->status == 'tidak')<span class="badge bg-danger">Belum dibaca</span>
+                  @else <span class="badge bg-primary">Sudah Dibaca</span>
+                  @endif</td>
               </tr>
               @empty
               <tr>
@@ -51,6 +55,17 @@
 
   @stop
 
+  @push('style')
+  <style>
+    [data-href] {
+      cursor: pointer;
+    }
+  </style>
+  @endpush
   @push('script')
-
+  <script>
+    $(".table").on("click", "tr[role=\"button\"]", function(e) {
+      window.location = $(this).data("href");
+    });
+  </script>
   @endpush

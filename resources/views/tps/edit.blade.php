@@ -8,24 +8,25 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Tambah {{$title}}</h3>
+                    <h3 class="card-title">Ubah {{$title}}</h3>
                 </div>
                 <!-- /.card-header -->
                 <form action="{{ $action }}" method="post" role="form" enctype="multipart/form-data">
                     {{ csrf_field() }}
+                    {{ method_field('PUT') }}
                     <div class="card-body">
 
                         <div class="form-group ">
-                            <label for="kecamatan">Kecamatan</label>
-                            <select name="kecamatan" class="selected2 form-control" id="cmbkecamatan">
-                                <option value="">--Pilih kecamatan--</option>
-                                @foreach ($dataKecamatan as $kecamatan)
-                                <option value="{{$kecamatan->id}}" {{old('kecamatan') == $kecamatan->id ? "selected" : ""}}>{{'Kecamatan : '.$kecamatan->nama.', Kabupaten :'.$kecamatan->nama_kabupaten}}</option>
+                            <label for="kelurahan">Kelurahan</label>
+                            <select name="kelurahan_id" class="selected2 form-control" id="cmbkelurahan">
+                                <option value="">--Pilih Kelurahan--</option>
+                                @foreach ($dataKelurahan as $kelurahan)
+                                <option value="{{$kelurahan->id}}" {{$tps->kelurahan_id == $kelurahan->id ? "selected" : ""}}>{{'Kelurahan : '.$kelurahan->nama.', Kecamatan : '.$kelurahan->nama_kecamatan.', Kabupaten : '.$kelurahan->nama_kabupaten}}</option>
                                 @endforeach
                             </select>
-                            @if ($errors->has('kecamatan'))
+                            @if ($errors->has('kelurahan'))
                             <span class="text-danger">
-                                <strong id="textkecamatan">{{ $errors->first('kecamatan')}}</strong>
+                                <strong id="textkelurahan">{{ $errors->first('kelurahan')}}</strong>
                             </span>
                             @endif
                         </div>
@@ -34,7 +35,7 @@
                                 <label for="nama" class=" form-control-label">Nama {{$title}}</label>
                             </div>
                             <div>
-                                <input type="text" name="nama" placeholder="Nama {{$title}}" id="nama" class="form-control  {{$errors->has('nama') ? 'form-control is-invalid' : 'form-control'}}" value="{{old('nama')}}" required>
+                                <input type="text" name="nama" id="nama" placeholder="Nama {{$title}}" class="form-control  {{$errors->has('nama') ? 'form-control is-invalid' : 'form-control'}}" value="{{ $tps->nama }}" required>
                             </div>
                             @if ($errors->has('nama'))
                             <span class="text-danger">
@@ -42,8 +43,8 @@
                             </span>
                             @endif
                         </div>
-
                     </div>
+
 
                     <!-- /.card-body -->
                     <div class="card-footer clearfix">
@@ -67,12 +68,21 @@
                 $("#nama").removeClass("is-invalid");
                 $("#textNama").html("");
             });
+
+            // $("#id_rt").keypress(function(){
+            //   $("#id_rt").removeClass("is-invalid");
+            //   $("#textid_rt").html("");
+            // });
             $('#cmbkabupaten').select2({
                 placeholder: '--- Pilih Kabupaten---',
                 width: '100%'
             });
             $('#cmbkecamatan').select2({
                 placeholder: '--- Pilih Kecamatan---',
+                width: '100%'
+            });
+            $('#cmbkelurahan').select2({
+                placeholder: '--- Pilih Kelurahan---',
                 width: '100%'
             });
         });

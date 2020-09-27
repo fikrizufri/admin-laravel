@@ -21,6 +21,7 @@ class CreateInboxesTable extends Migration
             $table->string('modem');
             $table->string('auth');
             $table->string('tanggal');
+            $table->enum('status', ['baca', 'tidak'])->default('tidak');
             $table->timestamps();
         });
     }

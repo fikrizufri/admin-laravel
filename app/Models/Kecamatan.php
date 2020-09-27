@@ -26,4 +26,11 @@ class Kecamatan extends Model
             return $this->kabupaten->nama;
         }
     }
+
+    public function getIdKabupatenAttribute()
+    {
+        if ($this->kabupaten) {
+            return $this->kabupaten->nama;
+        }
+    }
 }

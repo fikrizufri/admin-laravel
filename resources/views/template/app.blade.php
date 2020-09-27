@@ -105,6 +105,7 @@
   <script src="{{asset('template/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <!-- ChartJS -->
   <script src="{{asset('template/plugins/chart.js/Chart.min.js')}}"></script>
+  @stack('chart')
   <!-- Sparkline -->
   <script src="{{asset('template/plugins/sparklines/sparkline.js')}}"></script>
   <!-- JQVMap -->
@@ -131,7 +132,48 @@
   <script>
     setTimeout(function() {
       $(".alert").alert('close');
+
     }, 2000);
+
+
+
+    $(function() {
+      function getinbox() {
+        $.ajax({
+          type: 'get',
+          url: "{{route('inbox.unread')}}",
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
+          success: function(data) {
+            console.log(data)
+            $('#countinbox').html(data);
+            $('#topcountinbox').html(data);
+          }
+        });
+      }
+      getinbox();
+
+      setInterval(function() {
+        getinbox();
+      }, 2000);
+    });
+    (function($) {
+      $.fn.inputFilter = function(inputFilter) {
+        return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function() {
+          if (inputFilter(this.value)) {
+            this.oldValue = this.value;
+            this.oldSelectionStart = this.selectionStart;
+            this.oldSelectionEnd = this.selectionEnd;
+          } else if (this.hasOwnProperty("oldValue")) {
+            this.value = this.oldValue;
+            this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+          } else {
+            this.value = "";
+          }
+        });
+      };
+    }(jQuery));
   </script>
   <script src="{{ asset('js/swall.js') }}"></script>
   @stack('script')
