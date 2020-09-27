@@ -16,7 +16,7 @@ class CreatePerhitungansTable extends Migration
         Schema::create('perhitungan', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->date('tanggal');
-            $table->integer('jumlah', 10);
+            $table->integer('jumlah')->default(0);
             $table->string('paslon_id')->references('id')->on('paslon');
             $table->string('saksi_id')->references('id')->on('saksi');
             $table->timestamps();
