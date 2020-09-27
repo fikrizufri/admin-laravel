@@ -3,6 +3,9 @@
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
+use App\Models\Kabupaten;
+use App\Models\Kecamatan;
+
 class UsersTableSeeder extends Seeder
 {
     /**
